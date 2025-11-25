@@ -178,15 +178,15 @@
             background: #fffbef;
             border: 2px solid #FF6820;
         }
-		#sentenceNumber {
-			width: 70px;
-			height: 30px;
-			text-align: center;
-			font-size: 20px;
-			border: 2px solid #63a0d8;
-			border-radius: 5px;
-			margin: 0 5px;
-		}
+                #sentenceNumber {
+                        width: 70px;
+                        height: 30px;
+                        text-align: center;
+                        font-size: 20px;
+                        border: 2px solid #63a0d8;
+                        border-radius: 5px;
+                        margin: 0 5px;
+                }
         @media (max-width: 768px) {
             body {
                 padding-bottom: 220px;
@@ -239,30 +239,205 @@
     <audio id="wrongAudio" src="Sai.mp3"></audio>
 
     <script>
-        const sentences = [
-            { 
-                audioFile: "audio.mp3", 
-                start: 0,   
-                end: 4.5, 
-                correctAnswer: "【Bạn】【tên】【là】【gì】？", 
-                translation: "你叫什么名字？" 
-            },
-            { 
-                audioFile: "audio.mp3", 
-                start: 5,   
-                end: 9.5, 
-                correctAnswer: "【Mình】【đi】【chợ】【mua】【rau】。", 
-                translation: "我去市场买菜。" 
-            },
-            { 
-                audioFile: "audio.mp3", 
-                start: 10,  
-                end: 15,  
-                correctAnswer: "【Hôm nay】【trời】【rất】【nóng】。", 
-                translation: "今天很热。" 
-            },
-            // Thêm câu thoải mái...
-        ];
+
+const sentences = [
+    {
+        "audioFile": "audio.mp3",
+        "start": 0,
+        "end": 2.46,
+        "correctAnswer": "【Em】【có】【biết】【nấu】【món ăn】【Việt Nam】【không?】",
+        "translation": "你会做越南菜吗？"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 4.31,
+        "end": 6.08,
+        "correctAnswer": "【Anh】【có】【biết】【chị ấy】【không?】",
+        "translation": "你认识她吗？"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 8.05,
+        "end": 9.79,
+        "correctAnswer": "【Anh】【không】【biết】【chị ấy】.",
+        "translation": "我不认识她。"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 11.75,
+        "end": 14.03,
+        "correctAnswer": "【Có phải】【chị】【biết】【nói】【tiếng Việt】【không?】",
+        "translation": "你会说越南语，对吗？"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 15.81,
+        "end": 17.53,
+        "correctAnswer": "【Chị】【biết】【một】【chút】【tiếng Việt】",
+        "translation": "我会一点越南语。"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 19.94,
+        "end": 22.01,
+        "correctAnswer": "【Anh】【biết】【nói】【tiếng Trung】【phải không?】",
+        "translation": "你会说中文，对吗？"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 23.7,
+        "end": 25.21,
+        "correctAnswer": "【Mình】【biết】【anh ấy】.",
+        "translation": "我认识他。"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 27.08,
+        "end": 28.71,
+        "correctAnswer": "【Mình】【biết】【cuốn sách ấy】.",
+        "translation": "我知道那本书。"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 30.61,
+        "end": 32.67,
+        "correctAnswer": "【Em】【có】【biết】【chơi】【cầu lông】【không?】",
+        "translation": "你会打羽毛球吗？"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 34.3,
+        "end": 36.52,
+        "correctAnswer": "【Không,】【em】【không】【biết】【chơi】.",
+        "translation": "不，我不会玩。"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 38.15,
+        "end": 39.86,
+        "correctAnswer": "【Anh】【biết】【quán ăn ấy】.",
+        "translation": "我知道那家餐馆。"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 41.5,
+        "end": 43.3,
+        "correctAnswer": "【Tớ】【biết】【công ty】【ấy】.",
+        "translation": "我知道那家公司。"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 44.51,
+        "end": 46.35,
+        "correctAnswer": "【Tớ】【đã】【ăn tối】【rồi】.",
+        "translation": "我已经吃晚饭了。"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 47.56,
+        "end": 49.14,
+        "correctAnswer": "【Bạn】【đã】【ăn tối】【chưa?】",
+        "translation": "你吃晚饭了吗？"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 50.6,
+        "end": 52.83,
+        "correctAnswer": "【Chưa,】【mình】【chưa】【ăn tối】.",
+        "translation": "还没，我还没吃晚饭。"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 54.43,
+        "end": 56.37,
+        "correctAnswer": "【Anh】【đã】【xem】【bộ phim】【này】【chưa?】",
+        "translation": "你看过这部电影吗？"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 58.21,
+        "end": 59.96,
+        "correctAnswer": "【Chị】【đã】【nấu】【cơm】【chưa?】",
+        "translation": "你煮饭了吗？"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 61.31,
+        "end": 63.55,
+        "correctAnswer": "【Chưa,】【chị】【chưa】【nấu】.",
+        "translation": "还没，我还没煮。"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 65.05,
+        "end": 66.88,
+        "correctAnswer": "【Bạn】【dạy】【mình】【tiếng Việt】【nhé!?】",
+        "translation": "你教我越南语吧！？"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 68.7,
+        "end": 70.43,
+        "correctAnswer": "【Chúng ta】【đi】【ăn sáng】【nhé!?】",
+        "translation": "我们去吃早餐吧！？"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 72.12,
+        "end": 73.99,
+        "correctAnswer": "【Mọi người】【uống】【cà phê】【nhé!?】",
+        "translation": "大家喝咖啡吧！？"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 75.84,
+        "end": 78.39,
+        "correctAnswer": "【Trời】【mưa】【rồi,】【em】【lấy】【quần áo】【nhé!?】",
+        "translation": "下雨了，你去收衣服吧！？"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 80.5,
+        "end": 82.32,
+        "correctAnswer": "【Hôm nay】【thời tiết】【đẹp】【nhỉ!】",
+        "translation": "今天天气很好呢！"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 83.62,
+        "end": 85.83,
+        "correctAnswer": "【Ừ,】【thời tiết】【đẹp】【quá!】",
+        "translation": "嗯，天气真好啊！"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 87.02,
+        "end": 88.62,
+        "correctAnswer": "【Anh ấy】【đẹp trai】【nhỉ!】",
+        "translation": "他很帅呢！"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 90.41,
+        "end": 91.66,
+        "correctAnswer": "【Cũng】【bình thường】.",
+        "translation": "也很普通。"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 93.14,
+        "end": 94.86,
+        "correctAnswer": "【Bạn】【nói】【tiếng Việt】【giỏi】【nhỉ!】",
+        "translation": "你越南语说得很好呢！"
+    },
+    {
+        "audioFile": "audio.mp3",
+        "start": 95.83,
+        "end": 98.15,
+        "correctAnswer": "【Dạ,】【em】【biết】【một chút】【tiếng Việt】.",
+        "translation": "好，我会一点越南语。"
+    }
+];
 
         let currentIndex = 0;
         let isFreeMode = true;
